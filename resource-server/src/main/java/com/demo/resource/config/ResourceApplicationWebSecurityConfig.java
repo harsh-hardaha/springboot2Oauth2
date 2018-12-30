@@ -1,15 +1,28 @@
 package com.demo.resource.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 
 @EnableResourceServer
 @Configuration
 public class ResourceApplicationWebSecurityConfig extends ResourceServerConfigurerAdapter {
+	
+	@Value( "${security.oauth2.client.clientId}" )
+ 	private String clientId;
+ 
+  	@Value( "${security.oauth2.client.clientSecret}" )
+ 	private String clientSecret;
+ 
+  	@Value( "${security.oauth2.resource.token-info-uri}" )
+ 	private String tokenInfoURI;
 	
 	private static final String[] AUTH_WHITELIST = {
             // -- swagger ui
@@ -35,4 +48,13 @@ public class ResourceApplicationWebSecurityConfig extends ResourceServerConfigur
         .anyRequest().authenticated();
     }
 	
+	@Bean()
+ 	@Primary
+ 	protected RemoteTokenServices tokenServices(){
+ 		RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
+ 		remoteTokenServices.setCheckTokenEndpointUrl(tokenInfoURI);
+ 		remoteTokenServices.setClientId(clientId);
+ 		remoteTokenServices.setClientSecret(clientSecret);
+ 		return remoteTokenServices;
+ 	}
 }

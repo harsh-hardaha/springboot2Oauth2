@@ -19,13 +19,16 @@ server:
       
 security:
   oauth2:
-#    client:
+    client:
 #      accessTokenUri: http://localhost:8090/oauth/token
 #      userAuthorizationUri: http://localhost:8090/oauth/authorize
-#      clientId: clintABC
-#      clientSecret: secretXYZ
+      clientId: clientABC
+      clientSecret: secretXYZ
     resource:
       user-info-uri: http://localhost:8090/user
+      token-info-uri: http://localhost:8090/oauth/check_token
+      preferTokenInfo: true
+      filter-order: 3
   basic:
     enabled: false
         
