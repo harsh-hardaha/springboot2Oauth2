@@ -1,0 +1,44 @@
+server:
+  port: 8092
+  
+#spring:
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8091
+#        enabled: false
+#  application:
+#    name: Resource Server
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#      base-path: /admin
+      
+security:
+  oauth2:
+#    client:
+#      accessTokenUri: http://localhost:8090/oauth/token
+#      userAuthorizationUri: http://localhost:8090/oauth/authorize
+#      clientId: clintABC
+#      clientSecret: secretXYZ
+    resource:
+      user-info-uri: http://localhost:8090/user
+  basic:
+    enabled: false
+        
+swagger:
+  title : Resource Application
+  Version : 0.0.1-SNAPSHOT
+  security:
+    enable: true
+
+
+logging:
+  file: /logs/ResourceServer.log 
+  level: 
+    org.springframework: DEBUG
+  pattern: 
+      file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"

@@ -1,0 +1,26 @@
+server:
+  port: 8091
+  
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8091
+        enabled: true
+  application:
+    name: Admin Server
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /admin
+      
+logging:
+  file: /logs/AdminServer.log 
+  level: 
+    org.springframework: INFO
+    de.codecentric: INFO
+  pattern: 
+      file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
