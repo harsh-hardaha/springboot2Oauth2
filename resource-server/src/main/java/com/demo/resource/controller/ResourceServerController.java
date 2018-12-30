@@ -16,4 +16,5 @@ public class ResourceServerController {
 	public String nonSecuredResource() {
 		return "This is Non Secured Resource";
 	}
+
 }

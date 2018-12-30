@@ -33,7 +33,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("clientABC").secret("{noop}secretXYZ")
 				.authorizedGrantTypes("client_credentials")
-				.scopes("resource-server-read", "resource-server-write");
+				.scopes("resource-server-read", "resource-server-write")
+				.resourceIds(SERVER_RESOURCE_ID);
 	}
 	
 	@Override
