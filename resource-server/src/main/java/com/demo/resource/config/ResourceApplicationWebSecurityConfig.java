@@ -47,14 +47,4 @@ public class ResourceApplicationWebSecurityConfig extends ResourceServerConfigur
         .authorizeRequests().antMatchers("/nonsecured").permitAll()
         .anyRequest().authenticated();
     }
-	
-	@Bean()
- 	@Primary
- 	protected RemoteTokenServices tokenServices(){
- 		RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
- 		remoteTokenServices.setCheckTokenEndpointUrl(tokenInfoURI);
- 		remoteTokenServices.setClientId(clientId);
- 		remoteTokenServices.setClientSecret(clientSecret);
- 		return remoteTokenServices;
- 	}
 }
