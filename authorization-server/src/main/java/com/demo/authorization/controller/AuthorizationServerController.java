@@ -12,5 +12,4 @@ public class AuthorizationServerController {
 	public Principal user(Principal user) {
 		return user;
 	}
-
 }
