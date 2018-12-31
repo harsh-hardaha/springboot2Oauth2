@@ -6,9 +6,11 @@ spring:
     admin:
       client:
         url: http://localhost:8091
-        enabled: true
+        enabled: false
   application:
     name: Admin Server
+  aop:
+    proxy-target-class: true
     
 management:
   endpoints:
@@ -16,11 +18,27 @@ management:
       exposure:
         include: "*"
       base-path: /admin
-      
+
+security:
+  oauth2:
+    client:
+      grantType: client_credentials
+      accessTokenUri: http://localhost:8090/oauth/token
+      userAuthorizationUri: http://localhost:8090/oauth/authorize
+      clientId: clientABC
+      clientSecret: secretXYZ
+    resource:
+      user-info-uri: http://localhost:8090/user
+      token-info-uri: http://localhost:8090/oauth/check_token
+      preferTokenInfo: true
+      filter-order: 3
+  basic:
+    enabled: false
+
 logging:
   file: /logs/AdminServer.log 
   level: 
-    org.springframework: INFO
-    de.codecentric: INFO
+    org.springframework: DEBUG
+    de.codecentric: DEBUG
   pattern: 
       file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"

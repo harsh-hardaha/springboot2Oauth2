@@ -15,15 +15,6 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 @Configuration
 public class ResourceApplicationWebSecurityConfig extends ResourceServerConfigurerAdapter {
 	
-	@Value( "${security.oauth2.client.clientId}" )
- 	private String clientId;
- 
-  	@Value( "${security.oauth2.client.clientSecret}" )
- 	private String clientSecret;
- 
-  	@Value( "${security.oauth2.resource.token-info-uri}" )
- 	private String tokenInfoURI;
-	
 	private static final String[] AUTH_WHITELIST = {
             // -- swagger ui
             "/v2/api-docs",

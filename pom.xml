@@ -20,6 +20,13 @@
 		<module>admin-server</module>
     </modules>
     
+    <properties>
+        <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+		<spring-boot-admin.version>2.1.1</spring-boot-admin.version>
+		<spring-security-oauth2.version>2.3.4.RELEASE</spring-security-oauth2.version>
+		<spring-security-oauth2-autoconfigure.version>2.1.1.RELEASE</spring-security-oauth2-autoconfigure.version>
+    </properties>
+    
     <dependencies>
     	<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,6 +66,13 @@
 				<scope>import</scope>
 	        </dependency>
 	        <dependency>
+	            <groupId>org.springframework.security.oauth.boot</groupId>
+	            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+	            <version>${spring-security-oauth2-autoconfigure.version}</version>
+	            <type>pom</type>
+				<scope>import</scope>
+	        </dependency>
+	        <dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-test</artifactId>
 				<scope>test</scope>
@@ -71,10 +85,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <properties>
-        <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
-		<spring-boot-admin.version>2.1.1</spring-boot-admin.version>
-		<spring-security-oauth2.version>2.3.4.RELEASE</spring-security-oauth2.version>
-    </properties>
+    
 
 </project>
