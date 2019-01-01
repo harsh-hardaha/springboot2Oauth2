@@ -10,7 +10,7 @@ spring:
     admin:
       client:
         url: http://localhost:8091
-        enabled: false
+        enabled: true
   application:
     name: Authorization Server
 
@@ -22,7 +22,7 @@ management:
       base-path: /admin
   
 logging:
-  file: /logs/AuthourizationServer.log 
+  file: ../logs/AuthourizationServer.log 
   level: 
     org.springframework: DEBUG
   pattern: 

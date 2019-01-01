@@ -32,8 +32,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("clientABC").secret("{noop}secretXYZ")
-				.authorizedGrantTypes("client_credentials")
-				.scopes("read", "write");
+		        .authorizedGrantTypes("client_credentials", "password", "refresh_token")
+		        .authorities("ROLE_ADMIN", "ROLE_USER")
+				.scopes("read", "write")
+				.accessTokenValiditySeconds(60)
+				.refreshTokenValiditySeconds(30*24*60*60);//you should restart admin server atleast once in month
 	}
 	
 	@Override
