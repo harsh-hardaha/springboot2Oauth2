@@ -18,6 +18,9 @@ management:
       exposure:
         include: "*"
       base-path: /admin
+  endpoint:
+    health:
+      show-details: always
 
 security:
   oauth2:
